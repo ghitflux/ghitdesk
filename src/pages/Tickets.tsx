@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { TicketCard } from "@/components/tickets/ticket-card";
+import { TicketDetailDrawer } from "@/components/tickets/ticket-detail-drawer";
+import { NewTicketDialog } from "@/components/tickets/new-ticket-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +15,7 @@ import {
   Clock,
   Tag
 } from "lucide-react";
-import { mockTickets, getTicketsByStatus } from "@/lib/mocks/tickets";
+import { mockTickets, getTicketsByStatus, type Ticket } from "@/lib/mocks/tickets";
 import { getStatusName } from "@/lib/utils/formatters";
 
 const statusColumns = [
@@ -27,6 +29,9 @@ export default function Tickets() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPriority, setSelectedPriority] = useState<string | null>(null);
   const [selectedAssignee, setSelectedAssignee] = useState<string | null>(null);
+  const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
+  const [isDetailDrawerOpen, setIsDetailDrawerOpen] = useState(false);
+  const [isNewTicketDialogOpen, setIsNewTicketDialogOpen] = useState(false);
 
   const priorities = [
     { id: 'high', name: 'Alta', count: mockTickets.filter(t => t.priority === 'high').length },
@@ -64,6 +69,15 @@ export default function Tickets() {
     return tickets;
   };
 
+  const handleTicketClick = (ticket: Ticket) => {
+    setSelectedTicket(ticket);
+    setIsDetailDrawerOpen(true);
+  };
+
+  const handleNewTicket = () => {
+    setIsNewTicketDialogOpen(true);
+  };
+
   return (
     <AppLayout title="Tickets">
       <div className="flex h-full">
@@ -80,7 +94,10 @@ export default function Tickets() {
                   className="pl-10 bg-surface border-border"
                 />
               </div>
-              <Button className="w-full bg-brand-primary hover:bg-brand-secondary text-primary-foreground">
+              <Button 
+                className="w-full bg-brand-primary hover:bg-brand-secondary text-primary-foreground"
+                onClick={handleNewTicket}
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 Novo Ticket
               </Button>
@@ -199,7 +216,7 @@ export default function Tickets() {
                         {tickets.length}
                       </Badge>
                     </div>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" onClick={handleNewTicket}>
                       <Plus className="h-4 w-4" />
                     </Button>
                   </div>
@@ -221,7 +238,7 @@ export default function Tickets() {
                           <TicketCard
                             key={ticket.id}
                             ticket={ticket}
-                            onClick={() => console.log('Open ticket:', ticket.id)}
+                            onClick={() => handleTicketClick(ticket)}
                           />
                         ))}
                       </div>
@@ -233,6 +250,18 @@ export default function Tickets() {
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <TicketDetailDrawer
+        ticket={selectedTicket}
+        open={isDetailDrawerOpen}
+        onOpenChange={setIsDetailDrawerOpen}
+      />
+      
+      <NewTicketDialog
+        open={isNewTicketDialogOpen}
+        onOpenChange={setIsNewTicketDialogOpen}
+      />
     </AppLayout>
   );
 }
