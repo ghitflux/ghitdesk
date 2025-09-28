@@ -1,0 +1,29 @@
+# Node
+node_modules/
+.pnpm-store/
+.next/
+out/
+.docusaurus/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.env
+.venv/
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
+
+# Docker
+volumes/
+logs/
+
+# Misc
+*.log
+coverage/
