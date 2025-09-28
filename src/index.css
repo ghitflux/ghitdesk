@@ -2,95 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* GhitDesk Design System - Dark Mode First */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Brand Colors */
+    --brand-primary: 251 70% 71%;     /* #6F6AFF */
+    --brand-secondary: 251 70% 61%;   /* #5A55E6 */
+    --accent: 194 100% 50%;           /* #00C2FF */
+    
+    /* Feedback Colors */
+    --success: 142 76% 36%;           /* #16A34A */
+    --warning: 25 95% 53%;            /* #D97706 */
+    --danger: 0 84% 60%;              /* #EF4444 */
+    
+    /* Dark Theme (Default) */
+    --background: 225 18% 6%;         /* #0B0C10 */
+    --surface: 225 15% 9%;            /* #111218 */
+    --elevation: 225 12% 11%;         /* #161823 */
+    --foreground: 214 32% 91%;        /* #E9EDF1 */
+    --muted: 218 11% 65%;             /* #A6ADBB */
+    --muted-foreground: 218 11% 55%;  /* #8B92A0 */
+    
+    /* Component Colors */
+    --card: 225 15% 9%;
+    --card-foreground: 214 32% 91%;
+    --popover: 225 12% 11%;
+    --popover-foreground: 214 32% 91%;
+    --primary: 251 70% 71%;
+    --primary-foreground: 225 18% 6%;
+    --secondary: 225 12% 15%;
+    --secondary-foreground: 214 32% 91%;
+    --border: 225 12% 15%;
+    --input: 225 12% 15%;
+    --ring: 251 70% 71%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 214 32% 91%;
+    
+    /* Sidebar */
+    --sidebar-background: 225 18% 6%;
+    --sidebar-foreground: 214 32% 91%;
+    --sidebar-primary: 251 70% 71%;
+    --sidebar-primary-foreground: 225 18% 6%;
+    --sidebar-accent: 225 12% 11%;
+    --sidebar-accent-foreground: 214 32% 91%;
+    --sidebar-border: 225 12% 15%;
+    --sidebar-ring: 251 70% 71%;
+    
+    /* Design Tokens */
+    --radius: 8px;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  .light {
+    /* Light theme overrides (optional) */
+    --background: 0 0% 98%;
+    --surface: 0 0% 100%;
+    --elevation: 0 0% 97%;
+    --foreground: 225 18% 12%;
+    --muted: 218 11% 45%;
+    --muted-foreground: 218 11% 35%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 18% 12%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 225 18% 12%;
   }
 }
 
@@ -99,7 +78,93 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom utility classes */
+  .surface {
+    background-color: hsl(var(--surface));
+  }
+  
+  .elevation {
+    background-color: hsl(var(--elevation));
+  }
+  
+  .brand-primary {
+    color: hsl(var(--brand-primary));
+  }
+  
+  .bg-brand-primary {
+    background-color: hsl(var(--brand-primary));
+  }
+  
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+  
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+
+  /* SLA Status Colors */
+  .sla-ok {
+    background-color: hsl(var(--success) / 0.1);
+    color: hsl(var(--success));
+    border-color: hsl(var(--success) / 0.2);
+  }
+  
+  .sla-warning {
+    background-color: hsl(var(--warning) / 0.1);
+    color: hsl(var(--warning));
+    border-color: hsl(var(--warning) / 0.2);
+  }
+  
+  .sla-critical {
+    background-color: hsl(var(--danger) / 0.1);
+    color: hsl(var(--danger));
+    border-color: hsl(var(--danger) / 0.2);
+  }
+  
+  /* Priority Colors */
+  .priority-low {
+    background-color: hsl(var(--muted) / 0.1);
+    color: hsl(var(--muted-foreground));
+    border-color: hsl(var(--muted) / 0.2);
+  }
+  
+  .priority-medium {
+    background-color: hsl(var(--warning) / 0.1);
+    color: hsl(var(--warning));
+    border-color: hsl(var(--warning) / 0.2);
+  }
+  
+  .priority-high {
+    background-color: hsl(var(--danger) / 0.1);
+    color: hsl(var(--danger));
+    border-color: hsl(var(--danger) / 0.2);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: hsl(var(--surface));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground));
   }
 }
