@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   MessageCircle,
   Ticket,
+  ListTodo,
   Users,
   Settings,
   LogOut,
@@ -43,6 +44,12 @@ const navigationItems = [
     url: "/tickets",
     icon: Ticket,
     badge: 7 // Open tickets
+  },
+  {
+    title: "Tarefas",
+    url: "/tasks",
+    icon: ListTodo,
+    badge: 5 // Active tasks
   },
   {
     title: "Contatos",
