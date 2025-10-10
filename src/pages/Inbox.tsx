@@ -20,7 +20,9 @@ import {
   Clock,
   Tag,
   Phone,
-  MoreVertical
+  MoreVertical,
+  Send,
+  Twitter
 } from "lucide-react";
 import { mockConversations, mockMessages } from "@/lib/mocks/conversations";
 import { formatRelativeTime, getChannelName } from "@/lib/utils/formatters";
@@ -29,7 +31,11 @@ const channelIcons = {
   whatsapp: MessageCircle,
   instagram: Instagram,
   email: Mail,
-  webchat: Globe
+  webchat: Globe,
+  pinterest: Send,
+  x: Twitter,
+  threads: Instagram,
+  telegram: Send
 };
 
 export default function Inbox() {
@@ -68,10 +74,14 @@ export default function Inbox() {
     : [];
 
   const channels = [
-    { id: 'whatsapp', name: 'WhatsApp', icon: MessageCircle, count: 8 },
+    { id: 'whatsapp', name: 'WhatsApp', icon: MessageCircle, count: 3 },
     { id: 'email', name: 'E-mail', icon: Mail, count: 3 },
-    { id: 'instagram', name: 'Instagram', icon: Instagram, count: 2 },
-    { id: 'webchat', name: 'Chat Web', icon: Globe, count: 1 }
+    { id: 'instagram', name: 'Instagram', icon: Instagram, count: 1 },
+    { id: 'webchat', name: 'Chat Web', icon: Globe, count: 1 },
+    { id: 'pinterest', name: 'Pinterest', icon: Send, count: 1 },
+    { id: 'x', name: 'X (Twitter)', icon: Twitter, count: 1 },
+    { id: 'threads', name: 'Threads', icon: Instagram, count: 2 },
+    { id: 'telegram', name: 'Telegram', icon: Send, count: 2 }
   ];
 
   const queues = [

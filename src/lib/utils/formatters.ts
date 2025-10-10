@@ -64,7 +64,11 @@ export const getChannelName = (channel: string) => {
     whatsapp: 'WhatsApp',
     instagram: 'Instagram',
     email: 'E-mail',
-    webchat: 'Chat Web'
+    webchat: 'Chat Web',
+    pinterest: 'Pinterest',
+    x: 'X (Twitter)',
+    threads: 'Threads',
+    telegram: 'Telegram'
   };
   
   return channels[channel as keyof typeof channels] || channel;

@@ -56,20 +56,43 @@
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  .dark {
+    /* Dark theme (when toggled) */
+  }
+}
+
+@layer base {
   .light {
-    /* Light theme overrides (optional) */
-    --background: 0 0% 98%;
-    --surface: 0 0% 100%;
+    /* Light theme */
+    --background: 0 0% 100%;
+    --surface: 0 0% 98%;
     --elevation: 0 0% 97%;
     --foreground: 225 18% 12%;
-    --muted: 218 11% 45%;
-    --muted-foreground: 218 11% 35%;
+    --muted: 218 11% 50%;
+    --muted-foreground: 218 11% 45%;
+    
     --card: 0 0% 100%;
     --card-foreground: 225 18% 12%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --sidebar-background: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 18% 12%;
+    --primary: 251 70% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 225 18% 12%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 251 70% 61%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 225 18% 12%;
+    --sidebar-primary: 251 70% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 225 18% 12%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 251 70% 61%;
   }
 }
 

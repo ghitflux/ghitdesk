@@ -9,7 +9,7 @@ export interface Contact {
 export interface Conversation {
   id: string;
   contact: Contact;
-  channel: 'whatsapp' | 'instagram' | 'email' | 'webchat';
+  channel: 'whatsapp' | 'instagram' | 'email' | 'webchat' | 'pinterest' | 'x' | 'threads' | 'telegram';
   lastMessage: string;
   priority: 'low' | 'medium' | 'high';
   slaStatus: 'ok' | 'warning' | 'critical';
@@ -139,6 +139,97 @@ export const mockConversations: Conversation[] = [
     unreadCount: 0,
     updatedAt: '2024-01-14T14:20:00Z',
     status: 'pending'
+  },
+  {
+    id: '9',
+    contact: {
+      id: 'c9',
+      name: 'Laura Santos',
+      email: 'laura@example.com',
+      phone: '+55 11 98888-7777'
+    },
+    channel: 'pinterest',
+    lastMessage: 'Gostei muito desse produto! Como faço para comprar?',
+    priority: 'medium',
+    slaStatus: 'ok',
+    unreadCount: 1,
+    updatedAt: '2024-01-15T12:00:00Z',
+    status: 'active'
+  },
+  {
+    id: '10',
+    contact: {
+      id: 'c10',
+      name: 'Diego Martins',
+      phone: '+55 11 97777-6666'
+    },
+    channel: 'x',
+    lastMessage: 'Mandei um DM sobre o atendimento',
+    priority: 'low',
+    slaStatus: 'ok',
+    unreadCount: 1,
+    updatedAt: '2024-01-15T11:45:00Z',
+    status: 'active'
+  },
+  {
+    id: '11',
+    contact: {
+      id: 'c11',
+      name: 'Isabela Costa',
+      email: 'isabela@example.com'
+    },
+    channel: 'threads',
+    lastMessage: 'Vi sua publicação e queria saber mais sobre o produto',
+    priority: 'low',
+    slaStatus: 'ok',
+    unreadCount: 2,
+    updatedAt: '2024-01-15T11:30:00Z',
+    status: 'active'
+  },
+  {
+    id: '12',
+    contact: {
+      id: 'c12',
+      name: 'Rafael Alves',
+      phone: '+55 11 96666-5555'
+    },
+    channel: 'telegram',
+    lastMessage: 'Obrigado pelo suporte rápido!',
+    priority: 'low',
+    slaStatus: 'ok',
+    unreadCount: 0,
+    updatedAt: '2024-01-14T18:00:00Z',
+    status: 'resolved'
+  },
+  {
+    id: '13',
+    contact: {
+      id: 'c13',
+      name: 'Camila Dias',
+      email: 'camila@design.com'
+    },
+    channel: 'threads',
+    lastMessage: 'Adorei o conteúdo que vocês compartilharam!',
+    priority: 'low',
+    slaStatus: 'ok',
+    unreadCount: 0,
+    updatedAt: '2024-01-14T15:30:00Z',
+    status: 'resolved'
+  },
+  {
+    id: '14',
+    contact: {
+      id: 'c14',
+      name: 'Thiago Souza',
+      phone: '+55 21 95555-4444'
+    },
+    channel: 'telegram',
+    lastMessage: 'Preciso de informações sobre os planos disponíveis',
+    priority: 'medium',
+    slaStatus: 'ok',
+    unreadCount: 1,
+    updatedAt: '2024-01-15T10:00:00Z',
+    status: 'active'
   }
 ];
 
