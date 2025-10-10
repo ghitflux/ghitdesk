@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MessageCircle, Instagram, Mail, Globe } from "lucide-react";
+import { MessageCircle, Instagram, Mail, Globe, Send, Twitter } from "lucide-react";
 import { formatRelativeTime, getChannelName, getSLAStatus } from "@/lib/utils/formatters";
 import type { Conversation } from "@/lib/mocks/conversations";
 
@@ -14,14 +14,22 @@ const channelIcons = {
   whatsapp: MessageCircle,
   instagram: Instagram,
   email: Mail,
-  webchat: Globe
+  webchat: Globe,
+  pinterest: Send,
+  x: Twitter,
+  threads: Instagram,
+  telegram: Send
 };
 
 const channelColors = {
   whatsapp: 'text-success',
   instagram: 'text-warning',
   email: 'text-accent',
-  webchat: 'text-brand-primary'
+  webchat: 'text-brand-primary',
+  pinterest: 'text-danger',
+  x: 'text-foreground',
+  threads: 'text-warning',
+  telegram: 'text-accent'
 };
 
 const priorityVariants = {
