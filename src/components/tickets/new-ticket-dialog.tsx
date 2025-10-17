@@ -308,7 +308,7 @@ export function NewTicketDialog({ open, onOpenChange }: NewTicketDialogProps) {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="">Não atribuído</SelectItem>
+                        <SelectItem value="unassigned">Não atribuído</SelectItem>
                         {mockAgents.map((agent) => (
                           <SelectItem key={agent.id} value={agent.id}>
                             <div className="flex items-center gap-2">
