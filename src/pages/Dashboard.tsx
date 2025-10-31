@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatRelativeTime } from "@/lib/utils/formatters";
+import { motion } from "framer-motion";
 
 export default function Dashboard() {
   const recentActivities = [
@@ -57,44 +58,73 @@ export default function Dashboard() {
 
   return (
     <AppLayout title="Dashboard">
-      <div className="p-6 space-y-6">
+      <motion.div 
+        className="p-6 space-y-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          <KPIStat
-            title="Conversas Ativas"
-            value={12}
-            subtitle="3 não lidas"
-            icon={MessageCircle}
-            color="brand"
-            trend={{ value: 15, isPositive: true }}
-          />
-          <KPIStat
-            title="SLA a Vencer"
-            value={3}
-            subtitle="próximas 2 horas"
-            icon={Clock}
-            color="warning"
-            trend={{ value: 2, isPositive: false }}
-          />
-          <KPIStat
-            title="TMA"
-            value="2h 15min"
-            subtitle="tempo médio de atendimento"
-            icon={TrendingUp}
-            color="accent"
-            trend={{ value: 8, isPositive: true }}
-          />
-          <KPIStat
-            title="Satisfação"
-            value="4.8"
-            subtitle="avaliação média"
-            icon={Star}
-            color="success"
-            trend={{ value: 3, isPositive: true }}
-          />
-        </div>
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+            <KPIStat
+              title="Conversas Ativas"
+              value={12}
+              subtitle="3 não lidas"
+              icon={MessageCircle}
+              color="brand"
+              trend={{ value: 15, isPositive: true }}
+            />
+          </motion.div>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+            <KPIStat
+              title="SLA a Vencer"
+              value={3}
+              subtitle="próximas 2 horas"
+              icon={Clock}
+              color="warning"
+              trend={{ value: 2, isPositive: false }}
+            />
+          </motion.div>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+            <KPIStat
+              title="TMA"
+              value="2h 15min"
+              subtitle="tempo médio de atendimento"
+              icon={TrendingUp}
+              color="accent"
+              trend={{ value: 8, isPositive: true }}
+            />
+          </motion.div>
+          <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+            <KPIStat
+              title="Satisfação"
+              value="4.8"
+              subtitle="avaliação média"
+              icon={Star}
+              color="success"
+              trend={{ value: 3, isPositive: true }}
+            />
+          </motion.div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.4 }}
+        >
           {/* Volume por Canal */}
           <Card className="lg:col-span-2 border-border bg-surface">
             <CardHeader>
@@ -182,10 +212,15 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
 
         {/* Ações Rápidas */}
-        <Card className="border-border bg-surface">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+        >
+          <Card className="border-border bg-surface">
           <CardHeader>
             <CardTitle className="text-foreground">Ações Rápidas</CardTitle>
             <CardDescription>Acesse rapidamente as funcionalidades mais usadas</CardDescription>
@@ -213,7 +248,8 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-      </div>
+        </motion.div>
+      </motion.div>
     </AppLayout>
   );
 }

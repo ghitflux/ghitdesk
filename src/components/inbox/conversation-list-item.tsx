@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MessageCircle, Instagram, Mail, Globe, Send, Twitter } from "lucide-react";
 import { formatRelativeTime, getChannelName, getSLAStatus } from "@/lib/utils/formatters";
 import type { Conversation } from "@/lib/mocks/conversations";
+import { motion } from "framer-motion";
 
 interface ConversationListItemProps {
   conversation: Conversation;
@@ -52,7 +53,7 @@ export function ConversationListItem({
   const ChannelIcon = channelIcons[conversation.channel];
   
   return (
-    <div
+    <motion.div
       className={`p-4 cursor-pointer border-b border-border hover:bg-elevation transition-colors duration-200 ${
         isSelected ? 'bg-brand-primary/5 border-l-2 border-l-brand-primary' : ''
       }`}
@@ -66,6 +67,9 @@ export function ConversationListItem({
           onClick?.();
         }
       }}
+      whileHover={{ x: 4 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
     >
       <div className="flex items-start gap-3">
         <div className="relative">
@@ -114,6 +118,6 @@ export function ConversationListItem({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

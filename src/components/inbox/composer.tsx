@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Send, 
   Paperclip, 
@@ -86,10 +87,22 @@ export function Composer({
   };
 
   return (
-    <div className="border-t border-border bg-surface p-4">
+    <motion.div 
+      className="border-t border-border bg-surface p-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       {/* Attachments Preview */}
-      {attachments.length > 0 && (
-        <div className="mb-3 flex flex-wrap gap-2">
+      <AnimatePresence>
+        {attachments.length > 0 && (
+          <motion.div 
+            className="mb-3 flex flex-wrap gap-2"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+          >
           {attachments.map((file, index) => (
             <Badge
               key={index}
@@ -106,8 +119,9 @@ export function Composer({
               </button>
             </Badge>
           ))}
-        </div>
-      )}
+        </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="flex items-end gap-2">
         {/* Message Input */}
@@ -214,6 +228,6 @@ export function Composer({
       <div className="mt-2 text-xs text-muted-foreground">
         Ctrl + Enter para enviar
       </div>
-    </div>
+    </motion.div>
   );
 }

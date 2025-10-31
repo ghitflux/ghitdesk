@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   MessageCircle,
@@ -87,7 +88,12 @@ export function AppSidebar() {
   return (
     <Sidebar className={`${collapsed ? "w-16" : "w-64"} border-r border-border bg-background`}>
       <SidebarHeader className="p-4 border-b border-border">
-        <div className="flex items-center gap-3">
+        <motion.div 
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-primary">
             <Building2 className="h-4 w-4 text-primary-foreground" />
           </div>
@@ -97,7 +103,7 @@ export function AppSidebar() {
               <p className="text-xs text-muted-foreground">TechCorp Ltda</p>
             </div>
           )}
-        </div>
+        </motion.div>
       </SidebarHeader>
 
       <SidebarContent className="px-2 py-4">
@@ -107,8 +113,14 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
-              {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+              {navigationItems.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.2 }}
+                >
+                  <SidebarMenuItem>
                   <SidebarMenuButton asChild className="w-full">
                     <NavLink
                       to={item.url}
@@ -129,6 +141,7 @@ export function AppSidebar() {
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+                </motion.div>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -136,7 +149,12 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter className="p-3 border-t border-border">
-        <div className="flex items-center gap-3">
+        <motion.div 
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.3 }}
+        >
           <Avatar className="h-8 w-8">
             <AvatarImage src="/avatars/agent.jpg" alt="Agente" />
             <AvatarFallback className="bg-brand-primary text-primary-foreground text-sm">
@@ -157,7 +175,7 @@ export function AppSidebar() {
           >
             <LogOut className="h-4 w-4" />
           </Button>
-        </div>
+        </motion.div>
       </SidebarFooter>
     </Sidebar>
   );

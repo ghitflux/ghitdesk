@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { 
   Search, 
   Filter, 
@@ -191,11 +192,18 @@ export default function Contacts() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredContacts.map((contact) => {
+                {filteredContacts.map((contact, index) => {
                   const ChannelIcon = channelIcons[contact.primaryChannel];
                   
                   return (
-                    <TableRow key={contact.id} className="hover:bg-surface">
+                    <motion.tr 
+                      key={contact.id} 
+                      className="hover:bg-surface"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.03, duration: 0.2 }}
+                      whileHover={{ backgroundColor: "hsl(var(--surface))" }}
+                    >
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar className="h-8 w-8">
@@ -415,7 +423,7 @@ export default function Contacts() {
                           </SheetContent>
                         </Sheet>
                       </TableCell>
-                    </TableRow>
+                    </motion.tr>
                   );
                 })}
               </TableBody>

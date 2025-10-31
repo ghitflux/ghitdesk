@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock, CheckSquare, MessageSquare, Paperclip, Calendar } from "lucide-react";
 import { formatRelativeTime } from "@/lib/utils/formatters";
 import type { Task } from "@/lib/mocks/tasks";
+import { motion } from "framer-motion";
 
 interface TaskCardProps {
   task: Task;
@@ -40,12 +41,17 @@ export function TaskCard({ task, onClick, isDragging = false }: TaskCardProps) {
   const isOverdue = new Date(task.dueDate) < new Date() && task.status !== 'done';
   
   return (
-    <Card 
-      className={`cursor-pointer border-border bg-surface hover:bg-elevation transition-all duration-200 ${
-        isDragging ? 'rotate-2 shadow-lg' : ''
-      }`}
-      onClick={onClick}
+    <motion.div
+      whileHover={{ scale: 1.02, y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
     >
+      <Card 
+        className={`cursor-pointer border-border bg-surface hover:bg-elevation transition-all duration-200 ${
+          isDragging ? 'rotate-2 shadow-lg' : ''
+        }`}
+        onClick={onClick}
+      >
       <CardContent className="p-4">
         <div className="space-y-3">
           {/* Header */}
@@ -152,5 +158,6 @@ export function TaskCard({ task, onClick, isDragging = false }: TaskCardProps) {
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

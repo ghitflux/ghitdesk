@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, 
   Filter, 
@@ -197,24 +198,52 @@ export default function Inbox() {
           </div>
 
           <div className="flex-1 overflow-y-auto">
-            {filteredConversations.length === 0 ? (
-              <div className="p-8 text-center">
-                <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <h3 className="font-medium text-foreground mb-2">Nenhuma conversa encontrada</h3>
-                <p className="text-sm text-muted-foreground">
-                  Tente ajustar os filtros ou aguarde novas mensagens.
-                </p>
-              </div>
-            ) : (
-              filteredConversations.map((conversation) => (
-                <ConversationListItem
-                  key={conversation.id}
-                  conversation={conversation}
-                  isSelected={selectedConversationId === conversation.id}
-                  onClick={() => setSelectedConversationId(conversation.id)}
-                />
-              ))
-            )}
+            <AnimatePresence mode="wait">
+              {filteredConversations.length === 0 ? (
+                <motion.div 
+                  className="p-8 text-center"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="font-medium text-foreground mb-2">Nenhuma conversa encontrada</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Tente ajustar os filtros ou aguarde novas mensagens.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.03
+                      }
+                    }
+                  }}
+                >
+                  {filteredConversations.map((conversation, index) => (
+                    <motion.div
+                      key={conversation.id}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 }
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ConversationListItem
+                        conversation={conversation}
+                        isSelected={selectedConversationId === conversation.id}
+                        onClick={() => setSelectedConversationId(conversation.id)}
+                      />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
@@ -253,16 +282,30 @@ export default function Inbox() {
 
               {/* Mensagens */}
               <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages.length === 0 ? (
-                  <div className="text-center py-12">
-                    <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                    <p className="text-muted-foreground">Nenhuma mensagem ainda</p>
-                  </div>
-                ) : (
-                  messages.map((message) => (
-                    <MessageBubble key={message.id} message={message} />
-                  ))
-                )}
+                <AnimatePresence mode="wait">
+                  {messages.length === 0 ? (
+                    <motion.div 
+                      className="text-center py-12"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                    >
+                      <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                      <p className="text-muted-foreground">Nenhuma mensagem ainda</p>
+                    </motion.div>
+                  ) : (
+                    messages.map((message, index) => (
+                      <motion.div
+                        key={message.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.3 }}
+                      >
+                        <MessageBubble message={message} />
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
               </div>
 
               {/* Composer */}

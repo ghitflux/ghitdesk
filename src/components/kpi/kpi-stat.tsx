@@ -1,6 +1,7 @@
 import { LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { motion } from "framer-motion";
 
 interface KPIStatProps {
   title: string;
@@ -51,7 +52,11 @@ export function KPIStat({
   }
 
   return (
-    <Card className="border-border bg-surface hover:bg-elevation transition-colors duration-200">
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Card className="border-border bg-surface hover:bg-elevation transition-colors duration-200">
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-2">
@@ -82,5 +87,6 @@ export function KPIStat({
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, CheckCheck, Clock } from "lucide-react";
 import { formatTime } from "@/lib/utils/formatters";
 import type { Message } from "@/lib/mocks/conversations";
+import { motion } from "framer-motion";
 
 interface MessageBubbleProps {
   message: Message;
@@ -24,7 +25,12 @@ export function MessageBubble({ message }: MessageBubbleProps) {
   const StatusIcon = statusIcons[message.status];
   
   return (
-    <div className={`flex gap-3 mb-4 ${message.isMine ? 'flex-row-reverse' : 'flex-row'}`}>
+    <motion.div 
+      className={`flex gap-3 mb-4 ${message.isMine ? 'flex-row-reverse' : 'flex-row'}`}
+      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+    >
       {!message.isMine && (
         <Avatar className="h-8 w-8 flex-shrink-0">
           <AvatarFallback className="bg-surface text-foreground text-xs">
@@ -80,6 +86,6 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

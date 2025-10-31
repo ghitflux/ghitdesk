@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Clock, User, MessageCircle, Instagram, Mail, Globe } from "lucide-react";
 import { formatRelativeTime, formatSLATime, getSLAStatus, getChannelName } from "@/lib/utils/formatters";
 import type { Ticket } from "@/lib/mocks/tickets";
+import { motion } from "framer-motion";
 
 interface TicketCardProps {
   ticket: Ticket;
@@ -49,12 +50,17 @@ export function TicketCard({ ticket, onClick, isDragging = false }: TicketCardPr
   const slaStatus = getSLAStatus(ticket.slaDeadline);
   
   return (
-    <Card 
-      className={`cursor-pointer border-border bg-surface hover:bg-elevation transition-all duration-200 ${
-        isDragging ? 'rotate-2 shadow-lg' : ''
-      }`}
-      onClick={onClick}
+    <motion.div
+      whileHover={{ scale: 1.02, y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
     >
+      <Card 
+        className={`cursor-pointer border-border bg-surface hover:bg-elevation transition-all duration-200 ${
+          isDragging ? 'rotate-2 shadow-lg' : ''
+        }`}
+        onClick={onClick}
+      >
       <CardContent className="p-4">
         <div className="space-y-3">
           {/* Header */}
@@ -140,5 +146,6 @@ export function TicketCard({ ticket, onClick, isDragging = false }: TicketCardPr
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

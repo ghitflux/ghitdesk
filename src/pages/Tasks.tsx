@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, 
   Plus,
@@ -224,12 +225,30 @@ export default function Tasks() {
 
         {/* Kanban Board */}
         <div className="flex-1 overflow-x-auto">
-          <div className="flex h-full gap-6 p-6 min-w-max">
+          <motion.div 
+            className="flex h-full gap-6 p-6 min-w-max"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+          >
             {statusColumns.map((column) => {
               const tasks = filteredTasks(column.id);
               
               return (
-                <div key={column.id} className="flex flex-col w-80">
+                <motion.div 
+                  key={column.id} 
+                  className="flex flex-col w-80"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                >
                   {/* Column Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
@@ -245,31 +264,59 @@ export default function Tasks() {
 
                   {/* Column Content */}
                   <div className={`flex-1 rounded-lg border-2 border-dashed p-4 ${column.color} min-h-[500px]`}>
-                    {tasks.length === 0 ? (
-                      <div className="flex flex-col items-center justify-center h-32 text-center">
-                        <div className="w-8 h-8 rounded-full bg-muted/20 flex items-center justify-center mb-2">
-                          <ListTodo className="h-4 w-4 text-muted-foreground" />
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          Nenhuma tarefa {column.name.toLowerCase()}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="space-y-3">
-                        {tasks.map((task) => (
-                          <TaskCard
-                            key={task.id}
-                            task={task}
-                            onClick={() => handleTaskClick(task)}
-                          />
-                        ))}
-                      </div>
-                    )}
+                    <AnimatePresence mode="wait">
+                      {tasks.length === 0 ? (
+                        <motion.div 
+                          className="flex flex-col items-center justify-center h-32 text-center"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                        >
+                          <div className="w-8 h-8 rounded-full bg-muted/20 flex items-center justify-center mb-2">
+                            <ListTodo className="h-4 w-4 text-muted-foreground" />
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            Nenhuma tarefa {column.name.toLowerCase()}
+                          </p>
+                        </motion.div>
+                      ) : (
+                        <motion.div 
+                          className="space-y-3"
+                          initial="hidden"
+                          animate="visible"
+                          variants={{
+                            visible: {
+                              transition: {
+                                staggerChildren: 0.05
+                              }
+                            }
+                          }}
+                        >
+                          {tasks.map((task) => (
+                            <motion.div
+                              key={task.id}
+                              variants={{
+                                hidden: { opacity: 0, scale: 0.9, y: 10 },
+                                visible: { opacity: 1, scale: 1, y: 0 }
+                              }}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <TaskCard
+                                task={task}
+                                onClick={() => handleTaskClick(task)}
+                              />
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
 
