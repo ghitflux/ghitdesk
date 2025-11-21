@@ -4,60 +4,122 @@
 
 /* GhitDesk Design System - Dark Mode First */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
 
 @layer base {
   :root {
     /* Brand Colors */
     --brand-primary: 251 70% 71%;     /* #6F6AFF */
     --brand-secondary: 251 70% 61%;   /* #5A55E6 */
-    --accent: 194 100% 50%;           /* #00C2FF */
-    
+    --accent: 250 100% 97%;           /* #00C2FF */
+
     /* Feedback Colors */
     --success: 142 76% 36%;           /* #16A34A */
     --warning: 25 95% 53%;            /* #D97706 */
     --danger: 0 84% 60%;              /* #EF4444 */
-    
+
     /* Dark Theme (Default) */
-    --background: 225 18% 6%;         /* #0B0C10 */
+    --background: 0 0% 96%;         /* #0B0C10 */
     --surface: 225 15% 9%;            /* #111218 */
     --elevation: 225 12% 11%;         /* #161823 */
-    --foreground: 214 32% 91%;        /* #E9EDF1 */
-    --muted: 218 11% 65%;             /* #A6ADBB */
-    --muted-foreground: 218 11% 55%;  /* #8B92A0 */
-    
+    --foreground: 0 0% 9%;        /* #E9EDF1 */
+    --muted: 0 0% 63%;             /* #A6ADBB */
+    --muted-foreground: 0 0% 9%;  /* #8B92A0 */
+
     /* Component Colors */
-    --card: 225 15% 9%;
-    --card-foreground: 214 32% 91%;
-    --popover: 225 12% 11%;
-    --popover-foreground: 214 32% 91%;
-    --primary: 251 70% 71%;
-    --primary-foreground: 225 18% 6%;
-    --secondary: 225 12% 15%;
-    --secondary-foreground: 214 32% 91%;
-    --border: 225 12% 15%;
-    --input: 225 12% 15%;
-    --ring: 251 70% 71%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 214 32% 91%;
-    
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 89%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 243 75% 58%;
+    --primary-foreground: 225 100% 96%;
+    --secondary: 0 0% 32%;
+    --secondary-foreground: 0 0% 98%;
+    --border: 0 0% 83%;
+    --input: 0 0% 83%;
+    --ring: 243 75% 58%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
     /* Sidebar */
     --sidebar-background: 225 18% 6%;
-    --sidebar-foreground: 214 32% 91%;
-    --sidebar-primary: 251 70% 71%;
-    --sidebar-primary-foreground: 225 18% 6%;
-    --sidebar-accent: 225 12% 11%;
-    --sidebar-accent-foreground: 214 32% 91%;
-    --sidebar-border: 225 12% 15%;
-    --sidebar-ring: 251 70% 71%;
-    
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 243 75% 58%;
+    --sidebar-primary-foreground: 225 100% 96%;
+    --sidebar-accent: 0 0% 32%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 83%;
+    --sidebar-ring: 243 75% 58%;
+
     /* Design Tokens */
-    --radius: 8px;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --radius: 1.25rem;
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --accent-foreground: 258 89% 66%;
+    --chart-1: 234 89% 73%;
+    --chart-2: 255 91% 76%;
+    --chart-3: 270 95% 75%;
+    --chart-4: 238 83% 66%;
+    --chart-5: 0 0% 45%;
+    --sidebar: 0 0% 98%;
+    --font-sans: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'EB Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
   }
 
   .dark {
     /* Dark theme (when toggled) */
+    --background: 0 0% 9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 14%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 25%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 234 89% 73%;
+    --primary-foreground: 243 47% 20%;
+    --secondary: 0 0% 45%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 45%;
+    --muted-foreground: 0 0% 98%;
+    --accent: 261 72% 22%;
+    --accent-foreground: 255 91% 76%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 85% 97%;
+    --border: 0 0% 32%;
+    --input: 0 0% 32%;
+    --ring: 234 89% 73%;
+    --chart-1: 229 93% 81%;
+    --chart-2: 252 94% 85%;
+    --chart-3: 269 97% 85%;
+    --chart-4: 234 89% 73%;
+    --chart-5: 0 0% 45%;
+    --sidebar: 0 0% 14%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 234 89% 73%;
+    --sidebar-primary-foreground: 243 47% 20%;
+    --sidebar-accent: 255 91% 76%;
+    --sidebar-accent-foreground: 261 72% 22%;
+    --sidebar-border: 0 0% 32%;
+    --sidebar-ring: 234 89% 73%;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25)
   }
 }
 
@@ -70,7 +132,7 @@
     --foreground: 225 18% 12%;
     --muted: 218 11% 50%;
     --muted-foreground: 218 11% 45%;
-    
+
     --card: 0 0% 100%;
     --card-foreground: 225 18% 12%;
     --popover: 0 0% 100%;
@@ -84,7 +146,7 @@
     --ring: 251 70% 61%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    
+
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 225 18% 12%;
     --sidebar-primary: 251 70% 61%;
@@ -113,23 +175,23 @@
   .surface {
     background-color: hsl(var(--surface));
   }
-  
+
   .elevation {
     background-color: hsl(var(--elevation));
   }
-  
+
   .brand-primary {
     color: hsl(var(--brand-primary));
   }
-  
+
   .bg-brand-primary {
     background-color: hsl(var(--brand-primary));
   }
-  
+
   .text-accent {
     color: hsl(var(--accent));
   }
-  
+
   .bg-accent {
     background-color: hsl(var(--accent));
   }
@@ -140,32 +202,32 @@
     color: hsl(var(--success));
     border-color: hsl(var(--success) / 0.2);
   }
-  
+
   .sla-warning {
     background-color: hsl(var(--warning) / 0.1);
     color: hsl(var(--warning));
     border-color: hsl(var(--warning) / 0.2);
   }
-  
+
   .sla-critical {
     background-color: hsl(var(--danger) / 0.1);
     color: hsl(var(--danger));
     border-color: hsl(var(--danger) / 0.2);
   }
-  
+
   /* Priority Colors */
   .priority-low {
     background-color: hsl(var(--muted) / 0.1);
     color: hsl(var(--muted-foreground));
     border-color: hsl(var(--muted) / 0.2);
   }
-  
+
   .priority-medium {
     background-color: hsl(var(--warning) / 0.1);
     color: hsl(var(--warning));
     border-color: hsl(var(--warning) / 0.2);
   }
-  
+
   .priority-high {
     background-color: hsl(var(--danger) / 0.1);
     color: hsl(var(--danger));
@@ -177,17 +239,26 @@
     width: 8px;
     height: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background-color: hsl(var(--surface));
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background-color: hsl(var(--muted));
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background-color: hsl(var(--muted-foreground));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
